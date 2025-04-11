@@ -1,0 +1,138 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="029AC8FA-485D-4A94-9BE0-68E7146B370F" UpgradeCode="C0CF8666-E2D9-4259-A986-0AC6D7F86334" Version="1.0.0.0" Language="1033" Name="HTML" Manufacturer="HTML">
+    <Package InstallerVersion="200" InstallScope="perMachine" InstallPrivileges="elevated" Compressed="yes" Manufacturer="HTML" />
+    <Media EmbedCab="yes" Cabinet="media1.cab" Id="1" />
+    <Icon Id="MyIcon" SourceFile="Icon.ico" />
+    <WixVariable Id="WixUIDialogBmp" Value="Wizard.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Header.png" />
+    <WixVariable Id="WixUILicenseRtf" Value="L.rtf" />
+    <Property Id="ARPPRODUCTICON" Value="MyIcon" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MenuAppFolder" Name="TheAppName" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MyAppFolder" Name="HTML" />
+      </Directory>
+    </Directory>
+    <ComponentGroup Id="RemoveFolders">
+      <ComponentRef Id="Remove.MenuAppFolder" />
+      <ComponentRef Id="Remove.ProgramFilesFolder" />
+    </ComponentGroup>
+    <ComponentGroup Id="app">
+      <ComponentRef Id="CIdFBEFEC34" />
+      <ComponentRef Id="CId8E882B42" />
+      <ComponentRef Id="CId825B452D" />
+      <ComponentRef Id="CIdB2447878" />
+      <ComponentRef Id="CId3BE6B92B" />
+      <ComponentRef Id="CIdC7241341" />
+      <ComponentRef Id="CIdF0D454F2" />
+      <ComponentRef Id="CId94E61C5A" />
+      <ComponentRef Id="CId872D4DBB" />
+      <ComponentRef Id="CId2B2B5C60" />
+    </ComponentGroup>
+    <ComponentGroup Id="InstallLibaries">
+      <ComponentRef Id="CId3A55F41C" />
+    </ComponentGroup>
+    <ComponentGroup Id="Shortcuts">
+        <ComponentRef Id="CSCId238399D9" />
+        <ComponentRef Id="CSCId04DF4A71" />
+        <ComponentRef Id="CSCId25AE4DD4" />
+        <ComponentRef Id="CSCId60B074BF" />
+    </ComponentGroup>
+    <Feature Id="ProductFeature" Title="HTML" Description="Full App">
+      <ComponentGroupRef Id="RemoveFolders" />
+      <ComponentGroupRef Id="app" />
+      <ComponentGroupRef Id="Shortcuts" />
+    </Feature>
+    <Feature Id="InstallFeature" Title="Install Libaries" Description="install libaries">
+      <ComponentGroupRef Id="RemoveFolders" />
+      <ComponentGroupRef Id="InstallLibaries" />
+      <ComponentGroupRef Id="Shortcuts" />
+    </Feature>
+    <UIRef Id="WixUI_FeatureTree" />
+    <DirectoryRef Id="ProgramFilesFolder">
+      <Component Id="Remove.ProgramFilesFolder" Guid="6ECE2BFC-7AA2-48AC-A5F6-27D4FDC17287">
+        <RemoveFolder Id="ProgramFilesFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="MyAppFolder">
+      <Component Id="CId2B2B5C60" Guid="B4D770C5-FDC2-4036-93C7-67EF485D2CE6" Win64="no">
+        <File Id="FId8ED95306" Name="example.html" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId872D4DBB" Guid="FA51FA15-284B-41FE-B767-9030E772A189" Win64="no">
+        <File Id="FIdF8C261E2" Name="header.png" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId94E61C5A" Guid="AE510640-7792-42F1-AA41-6B62209DD449" Win64="no">
+        <File Id="FIdA1702E43" Name="html.exe" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdF0D454F2" Guid="273D6926-480A-4BA7-A64B-FE2687A07415" Win64="no">
+        <File Id="FId71EA931A" Name="html.js" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdC7241341" Guid="13F09C3B-98E5-46FF-ACB6-8E99B632663B" Win64="no">
+        <File Id="FId0EF9D15B" Name="html_original.exe" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId3BE6B92B" Guid="B57F0E44-47B4-4D4D-A449-4DA915B6867D" Win64="no">
+        <File Id="FIdA8EA5B04" Name="js2bin.exe" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdB2447878" Guid="E120C5DA-B1B2-4B5E-A3ED-EF7DC81922D3" Win64="no">
+        <File Id="FId988E6F83" Name="l.rtf" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId825B452D" Guid="4FAD2A9D-3F05-4B15-B59A-2B57CAF94BAC" Win64="no">
+        <File Id="FIdBB868266" Name="package.json" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId8E882B42" Guid="66166E27-AAFE-48B8-8915-A2DE64257900" Win64="no">
+        <File Id="FId9216F985" Name="package-lock.json" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdFBEFEC34" Guid="034358FD-F2FD-4BCC-8C24-A6D479F6E17B" Win64="no">
+        <File Id="FIdB581C74F" Name="setup.wxs" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId3A55F41C" Guid="40FB77DA-6D43-4DAB-A6C0-415AF8897829" Win64="no">
+        <File Id="FId64A13FA1" Name="install-libaries.bat" Source="C:\Users\zohan\OneDrive\Desktop\HTML\" />
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="ProgramMenuFolder">
+      <Component Id="CSCId238399D9" Guid="8AD73AE1-D1DE-4379-962C-A7A6BCA48050">
+        <Shortcut Id="SIdDB008783" Name="HTML" Target="[!FIdA1702E43]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId238399D9" Directory="ProgramMenuFolder" On="uninstall" />
+      </Component>
+      <Component Id="CSCId04DF4A71" Guid="210E805D-A064-4FEA-9E37-EB65CAAFF67C">
+        <Shortcut Id="SIdFA7F90D0" Name="Install Libaries For HTML" Target="[!FId64A13FA1]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId04DF4A71" Directory="ProgramMenuFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="MenuAppFolder">
+      <Component Id="Remove.MenuAppFolder" Guid="380D2E90-FAE5-49C5-8434-A43B88354698">
+        <RemoveFolder Id="MenuAppFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="CSCId25AE4DD4" Guid="74A1CB01-333E-4899-A927-C2061FABBD19">
+        <Shortcut Id="SIdAC14B607" Name="HTML" Description="HTML On Windows" Target="[!FIdA1702E43]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId25AE4DD4" Directory="DesktopFolder" On="uninstall" />
+      </Component>
+      <Component Id="CSCId60B074BF" Guid="DB2C17DE-D862-4E6B-8D24-83BC5CE23976">
+        <Shortcut Id="SId5C7F0E5A" Name="Install Libaries For HTML" Description="installs libaries for html so it can work and open" Target="[!FId64A13FA1]" WorkingDirectory="MyAppFolder" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId60B074BF" Directory="DesktopFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+  </Product>
+</Wix>
